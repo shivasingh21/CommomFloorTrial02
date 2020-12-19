@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Propertytype:</strong>
+  <%= @property.propertytype %>
+</p>
+
+<p>
+  <strong>Ownername:</strong>
+  <%= @property.ownername %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @property.location %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @property.price %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @property.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
+
+<%= form_with model: [@property, @comment] do |form| %>
+  <%= form.text_field :rating %>
+  <%= form.text_field :comment %>
+  <%= form.submit "Comment"%>
+<% end %>
+
+<% @comments.each do |comment|%>
+  <p><%= comment.user.name %></p>
+  <p><%= comment.rating %></p>
+  <p><%= comment.comment %></p>
+<% end %>
